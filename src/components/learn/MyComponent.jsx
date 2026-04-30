@@ -1,6 +1,12 @@
+//JSX
+//Fragment
+import './style.css'
 const MyComponent = () => {
     return (
-        <div>Hello world</div>
+        <>
+            <div>Hello world</div>
+            <div className="child">Child</div>
+        </>
     );
 }
 const FakeComponent = () => {
