@@ -7,7 +7,7 @@ const TodoData = (props) => {
             {todoList.map((item, index) => {
                 console.log("Check map", item, index);
                 return (
-                    <div className="todo-item" key={index}>
+                    <div className={`todo-item`} key={index}>
                         <div>{item.name}</div>
                         <button>Delete</button>
                     </div>
