@@ -9,6 +9,7 @@ const TodoNew = (props) => {
     //addNewTodo("1");
     const handleClick = () => {
         addNewTodo(valueInput);
+        setValueInput("");
     }
     const handOnChange = (event) => {
         setValueInput(event);

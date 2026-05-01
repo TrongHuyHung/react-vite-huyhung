@@ -1,22 +1,19 @@
 const TodoData = (props) => {
-    //props là một object
-    // {
-    //     name: "Eric",
-    //     age: 25,
-    //     data: {}
-    // }
-    // Cách 1
-    const { name, age, data } = props;
 
-    // Cách 2
-    // const name = props.name;
-    // const age = props.age;
-    // const data = props.data;
+    const { todoList } = props;
 
-    console.log("checks -> props", props);
+    console.log("checks -> props", todoList);
     return (
         <div className='todo-data'>
-            <div>My name is {name}</div>
+            {todoList.map((item, index) => {
+                console.log("Check map", item, index);
+                return (
+                    <div className="todo-item">
+                        <div>{item.name}</div>
+                        <button>Detele</button>
+                    </div>
+                );
+            })}
             <div>Learning React</div>
             <div>{JSON.stringify(props.todoList)}</div>
         </div>

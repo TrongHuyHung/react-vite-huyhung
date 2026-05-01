@@ -1,4 +1,9 @@
 .todo-container {
+    margin: 0 auto;
+    max-width: 1440px;
+}
+
+.todo-input {
     text-align: center;
 }
 
@@ -23,6 +28,7 @@
 
 .todo-title {
     font-size: 2.25rem;
+    text-align: center;
     margin-bottom: 2rem;
     color: red;
 }
@@ -61,4 +67,18 @@
     .logo {
         animation: logo-spin infinite 20s linear;
     }
+}
+
+.todo-data {
+    border: 1px solid black;
+    max-width: 500px;
+    align-items: center;
+    margin: auto;
+    padding: 8px;
+}
+
+.todo-item {
+    padding: 8px 0;
+    display: flex;
+    justify-content: space-between;
 }
