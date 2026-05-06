@@ -15,8 +15,13 @@ const UserForm = () => {
                 message: "create user",
                 description: "tạo user thành công"
             })
+        } else {
+            notification.error({
+                message: "error create user",
+                description: JSON.stringify(response.message)
+            })
         }
-        console.log("check api", response.data.data)
+
     }
 
     //console.log("Check", fullName, email, password, phone);
