@@ -4,15 +4,12 @@ import { useEffect, useState } from 'react';
 
 
 const UserTable = () => {
-    const [dataUser, setDataUser] = useState([
-        { _id: "eric", fullName: 25, email: "Hanoi" },
-        { _id: "hoidanit", fullName: 25, email: "HoChiMinh" },
-    ])
+    const [dataUser, setDataUser] = useState([])
 
     useEffect(() => {
         console.log("run 111");
         loadUser();
-    });
+    }, []);
 
     const columns = [
         {
@@ -38,9 +35,6 @@ const UserTable = () => {
         console.log("after run", res);
         setDataUser(res.data);
     }
-
-
-    console.log("run 000");
 
     return (
         <Table columns={columns} dataSource={dataUser} rowKey={"_id"} />
