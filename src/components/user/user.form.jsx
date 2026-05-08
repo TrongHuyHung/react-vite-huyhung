@@ -23,7 +23,7 @@ const UserForm = (props) => {
         const response = await createUserApi(fullName, email, password, phone);
         if (response.data) {
             notification.success({
-                message: "create user",
+                message: "Create user",
                 description: "tạo user thành công"
             })
             resetAndCloseModal();
