@@ -1,10 +1,10 @@
-import { Popconfirm } from "antd";
+import { notification, Popconfirm } from "antd";
 import { useEffect, useState } from "react";
 import { deleteUserApi } from "../../services/api.services";
 
 
 const DeleteUserModel = (props) => {
-    const { openViewDelete, setOpenViewDelete, dataViewDelete, setDataViewDelete } = props;
+    const { openViewDelete, setOpenViewDelete, dataViewDelete, setDataViewDelete, loadUser } = props;
     const [_id, setId] = useState("");
 
 
@@ -23,7 +23,7 @@ const DeleteUserModel = (props) => {
                 description: "xóa thành công"
             })
             resetAndCloseModal();
-            //await loadUser();
+            await loadUser();
         } else {
             notification.error({
                 message: "error delete user",
@@ -34,13 +34,15 @@ const DeleteUserModel = (props) => {
 
     const resetAndCloseModal = () => {
         setId("");
-        setDataUpdate(null);
+        setDataViewDelete(null);
         setOpenViewDelete(false);
     }
     return (
         <Popconfirm
             title="Xóa tài khoản"
             description="Bạn có chắc chắn muốn xóa tài khoản?"
+            placement="topLeft"
+            open={openViewDelete}
             onConfirm={() => handSubmitDeleteBtn()}
             onCancel={() => resetAndCloseModal()}
             okText="Yes"

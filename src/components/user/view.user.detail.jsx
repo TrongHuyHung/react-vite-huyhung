@@ -1,18 +1,14 @@
 import { Drawer } from "antd";
-import { useState } from "react";
+
 
 const ViewUserDetail = (props) => {
 
     const { setOpenViewDetail, openViewDetail, dataViewDetail, setDataViewDetail } = props
-    const showDrawer = () => {
-        setOpen(true);
-    };
-    const onClose = () => {
-        setOpen(false);
-    };
+
 
     return (
         <Drawer
+            width={"50vw"}
             title="Basic Drawer"
             closable={{ 'aria-label': 'Close Button' }}
             onClose={() => {
@@ -27,6 +23,24 @@ const ViewUserDetail = (props) => {
                     <p>Họ và tên: {dataViewDetail.fullName}</p>
                     <p>Email: {dataViewDetail.email}</p>
                     <p>Số điện thoại: {dataViewDetail.phone}</p>
+
+                    <div>
+                        <img height={300} width={250} src={`${import.meta.env.VITE_BACKEND_URL}/images/avatar/${dataViewDetail.avatar}`} />
+                    </div>
+
+                    <div>
+                        <label
+                            htmlFor="btnFile"
+                            style={{
+                                backgroundColor: "orange",
+                                padding: "5px 20px",
+                                cursor: "pointer",
+                                borderRadius: "5px"
+                            }}
+                        >Choose file</label>
+                        <input type="file" hidden id="btnFile" />
+                    </div>
+
                 </>
                 :
                 <>

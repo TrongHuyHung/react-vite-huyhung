@@ -61,7 +61,6 @@ const UserTable = (props) => {
                     <DeleteOutlined
                         style={{ cursor: "pointer", color: "red" }}
                         onClick={() => {
-                            alert("click")
                             setDataViewDelete(record);
                             setOpenViewDelete(true)
                         }}
@@ -93,9 +92,10 @@ const UserTable = (props) => {
 
             <DeleteUserModel
                 openViewDelete={openViewDelete}
-                setDataViewDelete={setDataViewDelete}
+                setOpenViewDelete={setOpenViewDelete}
                 dataViewDelete={dataViewDelete}
-                setOpenViewDelete={setDataViewDelete}
+                setDataViewDelete={setDataViewDelete}
+                loadUser={loadUser}
             />
 
         </>
