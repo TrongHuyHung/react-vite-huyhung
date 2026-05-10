@@ -20,6 +20,14 @@ const UserTable = (props) => {
 
     const columns = [
         {
+            title: "STT",
+            render: (_, record, index) => (
+                <>
+                    <div>{index + 1}</div>
+                </>
+            )
+        },
+        {
             title: 'Id',
             dataIndex: '_id',
             render: (_, record) => {
@@ -88,6 +96,7 @@ const UserTable = (props) => {
                 openViewDetail={openViewDetail}
                 dataViewDetail={dataViewDetail}
                 setDataViewDetail={setDataViewDetail}
+                loadUser={loadUser}
             />
 
             <DeleteUserModel
