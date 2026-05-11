@@ -7,7 +7,7 @@ import DeleteUserModel from './delete.user.model';
 
 
 const UserTable = (props) => {
-    const { dataUser, loadUser } = props;
+    const { dataUser, loadUser, current, pageSize, total, setCurrent, setPageSize } = props;
 
     const [isModalUpdateOpen, setIsModalUpdateOpen] = useState(false);
     const [dataUpdate, setDataUpdate] = useState({});
@@ -23,7 +23,7 @@ const UserTable = (props) => {
             title: "STT",
             render: (_, record, index) => (
                 <>
-                    <div>{index + 1}</div>
+                    <div>{(index + 1) + (current - 1)}</div>
                 </>
             )
         },
@@ -77,12 +77,38 @@ const UserTable = (props) => {
             ),
         }
     ];
+    const onChange = (pagination, filters, sorter, extra) => {
+        if (pagination && pagination.current) {
+            if (+pagination.current !== +current) {
+                setCurrent(+pagination.current)
+            }
+        }
 
 
+        if (pagination && pagination.pageSize) {
+            if (+pagination.pageSize !== +pageSize) {
+                setPageSize(+pagination.pageSize)
+            }
+        }
+        console.log("--> Check", pagination, filters, sorter, extra);
+    };
 
     return (
         <>
-            <Table columns={columns} dataSource={dataUser} rowKey={"_id"} />
+            <Table
+                columns={columns}
+                dataSource={dataUser}
+                rowKey={"_id"}
+                pagination={
+                    {
+                        current: current,
+                        pageSize: pageSize,
+                        showSizeChanger: true,
+                        total: total,
+                        showTotal: (total, range) => { return (<div> {range[0]}-{range[1]} trên {total} rows</div>) }
+                    }}
+                onChange={onChange}
+            />
             <UpdateUserModel
                 isModalUpdateOpen={isModalUpdateOpen}
                 setIsModalUpdateOpen={setIsModalUpdateOpen}
